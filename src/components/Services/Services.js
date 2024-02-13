@@ -1,8 +1,12 @@
 import React from 'react';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-
+import { useNavigate, Link } from "react-router-dom";
 const ServicesCard = ({ title, imageUrl }) => {
+  const history = useNavigate();
+  const navigateTo = (path) => {
+    history(path);
+  };
   const cardStyles = {
     maxWidth: 300,
     width: '100%',
@@ -47,12 +51,17 @@ const ServicesCard = ({ title, imageUrl }) => {
     backgroundColor: 'black', // Background color of the button
     color: '#fff', // Text color of the button
   };
-
+  const handleBookNow = () => {
+    console.log('Button clicked. Storing title in session. Title:', title);
+    sessionStorage.setItem('selectedServiceTitle', title);
+    history(`/Services/${encodeURIComponent(title)}`);
+  };
+  
   return (
     <Paper style={cardStyles}>
       <img src={imageUrl} alt="" style={imageStyles} />
       <div style={titleStyles}>{title}</div>
-      <Button variant="contained" style={buttonStyles}>
+      <Button variant="contained" style={buttonStyles} onClick={handleBookNow}>
         Book Now
       </Button>
     </Paper>

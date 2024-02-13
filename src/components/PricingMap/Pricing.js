@@ -39,7 +39,7 @@ const sliderImageData = [
   },
 ];
 
-const MyComponent = () => {
+const Pricing = () => {
   return (
     <Grid container spacing={1} style={{margin:1, overflow: 'hidden' }}>
       {/* Left Section */}
@@ -97,4 +97,4 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default Pricing;
